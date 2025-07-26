@@ -16,6 +16,7 @@
                 </div>
             </div>
             <div class="row m-3">
+                {% if posts %}
                 {% for post in posts %}
                 <div class="col-4 mb-4">
                     <div class="card">
@@ -28,7 +29,7 @@
                                     <h5 class="card-title">{{post.title}}</h5>
                                     <p class="card-text">{{post.content}}</p>
                                     <div class="d-flex justify-content-between">
-                                        <a href="./detail.html">Read More</a>
+                                        <a href="{% url 'Blog:detail' post_id=post.id %}">Read More</a>
                                         <a class="text-decoration-none text-dark fw-bold" href="#">Sports</a>
                                     </div>
                                 </div>
@@ -37,6 +38,9 @@
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                    <p>No posts available</p>
+                {% endif %}
             </div>
             <div class="row">
             
